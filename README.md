@@ -78,6 +78,9 @@ rosrun controller pid
 ### Final step:
 
 Press the green button to start auto mode. Press the red(emergency) button as soon as you want to stop the car.
+#### Note:
+In case the car in not shifting to auto mode, check if the car_status_txt_ros script is publishing 'zero array'. If yes, try swapping ports in the car_status_txt_ros and accu-sgu_txt scripts from 0 to 1 or vice versa(both with have different ports, 0 for one and 1 for other).
+port number od is the lsat digit here: /dev/ttyACM1 (porrt 1)
 
 ### Ouster setup:
 connect to ouster
