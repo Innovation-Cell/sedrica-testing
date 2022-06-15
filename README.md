@@ -88,3 +88,17 @@ connect to ouster
 ```bash
 roslaunch ouster_ros os1.launch
 ```
+
+### Velodyne setup:
+Velodyne documentation [link](https://docs.google.com/document/d/1N4paVTk1ZYv9ND4l8dl31zfyF1FFTrygZEw6Xb2E8e4/edit?usp=sharing)
+
+1. connect to velodyne lidar and create a wired link. `sudo wireshark` for checking lidar's IP address
+2. check data port of the lidar by logging to it's IP address in any browser
+3. install veloview and rviz dependencies for visualisation of data
+4. `roslaunch velodyne_pointcloud VLP16_points.launch`
+5. Echo the following topic to see if data is being recieved `rostopic echo /velodyne_points`
+6. visualise the data in rviz `rosrun rviz rviz -f velodyne`
+7. If data is echoed but visualisation is blank, try
+`rosrun tf static_transform_publisher 0 0 0 0 0 0 1 map velodyne 10`
+8. If data isn’t getting echoed, but topics are being shown in the list and rqt_graph, check the port value in lidar configuration by going to it's IP address and try toggling it between 2368 and 2370 (refresh again post saving as it might not be changed)
+9. if nothing works, restart the system and start over :)
